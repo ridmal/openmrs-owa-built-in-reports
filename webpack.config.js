@@ -44,110 +44,110 @@ let localOwaFolder;
 
 let devtool;
 
-var getConfig = function () {
-	let config;
+let getConfig = function () {
+  let config;
   try {
 	// look for config file
-	config = require('./config.json');
-    } catch (err) {
+    config = require('./config.json');
+  } catch (err) {
 			// create file with defaults if not found
-			config = {
-				'LOCAL_OWA_FOLDER': 'C:\\Users\\Jude\\openmrs\\ee\\owa\\',
-				'APP_ENTRY_POINT': 'http://localhost:8080/openmrs/owa/openmrs-owa-built-in-reports/index.html'
-			};
-			fs.writeFile('config.json', JSON.stringify(config));
-		} finally {
-			return config;
-		}
-	}
+    config = {
+      'LOCAL_OWA_FOLDER': 'C:\\Users\\Jude\\openmrs\\ee\\owa\\',
+      'APP_ENTRY_POINT': 'http://localhost:8080/openmrs/owa/openmrs-owa-built-in-reports/index.html'
+    };
+    fs.writeFile('config.json', JSON.stringify(config));
+  } finally {
+    return config;
+  }
+};
 const config = getConfig();
 
 /** Minify for production */
 if (env === 'production') {
 	
-	plugins.push(new UglifyPlugin({
-		output: {
-			comments: false,
-		},
-		minimize: true,
-		sourceMap: false,
-		compress: {
-			warnings: false
-		}
-	}));
-	plugins.push(new DedupePlugin());
-	outputFile = `${outputFile}.min.js`;
-	outputPath = `${__dirname}/dist/`;
-	plugins.push(new WebpackOnBuildPlugin(function(stats){
+  plugins.push(new UglifyPlugin({
+    output: {
+      comments: false,
+    },
+    minimize: true,
+    sourceMap: false,
+    compress: {
+      warnings: false
+    }
+  }));
+  plugins.push(new DedupePlugin());
+  outputFile = `${outputFile}.min.js`;
+  outputPath = `${__dirname}/dist/`;
+  plugins.push(new WebpackOnBuildPlugin(function(stats){
       //create zip file
-      var archiver = require('archiver');
+    const archiver = require('archiver');
 			
-			var output = fs.createWriteStream(THIS_APP_ID+'.zip');
-			var archive = archiver('zip');
+    const output = fs.createWriteStream(THIS_APP_ID+'.zip');
+    const archive = archiver('zip');
 
-			output.on('close', function () {
-				console.log('distributable has been zipped! size: '+archive.pointer());
-			});
+    output.on('close', function () {
+      //console.log('distributable has been zipped! size: '+archive.pointer());
+    });
 
-			archive.on('error', function(err){
-				throw err;
-			});
+    archive.on('error', function(err){
+      throw err;
+    });
 
-			archive.pipe(output);
+    archive.pipe(output);
 
-      archive.directory(`${outputPath}`, '');
+    archive.directory(`${outputPath}`, '');
 
-			archive.finalize();
-		}))
+    archive.finalize();
+  }));
 
 } else if (env === 'deploy') {
-	outputFile = `${outputFile}.js`;
-	outputPath = `${config.LOCAL_OWA_FOLDER}${THIS_APP_ID}`;
-	devtool = 'source-map';
+  outputFile = `${outputFile}.js`;
+  outputPath = `${config.LOCAL_OWA_FOLDER}${THIS_APP_ID}`;
+  devtool = 'source-map';
 
 } else if (env === 'dev') {
-	outputFile = `${outputFile}.js`;
-	outputPath = `${__dirname}/dist/`;
-	devtool = 'source-map';
+  outputFile = `${outputFile}.js`;
+  outputPath = `${__dirname}/dist/`;
+  devtool = 'source-map';
 }
 
 plugins.push(new BrowserSyncPlugin({
-    proxy: {
-			target : config.APP_ENTRY_POINT
-    }
+  proxy: {
+    target : config.APP_ENTRY_POINT
+  }
 }));
 
 plugins.push(new CommonsChunkPlugin("vendor", "vendor.bundle.js"));
 
 plugins.push(new HtmlWebpackPlugin({
-    template: './app/index.html',
-    inject: 'body'
+  template: './app/index.html',
+  inject: 'body'
 }));
 
 plugins.push(new CopyWebpackPlugin([{
-    from: './app/manifest.webapp'
+  from: './app/manifest.webapp'
 }]));
 
 plugins.push(new CopyWebpackPlugin([{
-	from: './app/img/',
-	to: 'img'
+  from: './app/img/',
+  to: 'img'
 },
 {
-	from: 'libs',
-	to: 'libs'
+  from: 'libs',
+  to: 'libs'
 }
 ]));
 
 
 
-var webpackConfig = {
+const webpackConfig = {
   quiet: false,
   entry: {
-		app : `${__dirname}/app/js/openmrs-owa-built-in-reports`,
-		css: `${__dirname}/app/css/openmrs-owa-built-in-reports.css`,
-		vendor : [
-			'react', 'react-router-dom'
-			]
+    app : `${__dirname}/app/js/openmrs-owa-built-in-reports`,
+    css: `${__dirname}/app/css/openmrs-owa-built-in-reports.css`,
+    vendor : [
+      'react', 'react-router-dom'
+    ]
   },
   devtool: devtool,
   target,
@@ -157,22 +157,22 @@ var webpackConfig = {
   },
   module: {
     loaders: [{
-			test: /\.jsx?$/,
-			loader: 'babel-loader',
-			exclude: /node_modules/
+      test: /\.jsx?$/,
+      loader: 'babel-loader',
+      exclude: /node_modules/
     },{
-			test: /\.css$/,
-			loader: 'style-loader!css-loader'
-	}, {
-		test: /\.(png|jpg|jpeg|gif|svg)$/,
-		loader: 'url'
-	}, {
-		test: /\.html$/,
-		loader: 'html'
-	}, {
-		test: /\.(json|webapp)$/,
-		loader: 'json-loader'
-  }],
+      test: /\.css$/,
+      loader: 'style-loader!css-loader'
+    }, {
+      test: /\.(png|jpg|jpeg|gif|svg)$/,
+      loader: 'url'
+    }, {
+      test: /\.html$/,
+      loader: 'html'
+    }, {
+      test: /\.(json|webapp)$/,
+      loader: 'json-loader'
+    }],
   },
   resolve: {
     root: path.resolve('./src'),

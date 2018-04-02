@@ -18,11 +18,11 @@ import "./app.css";
 export default class App extends React.Component {
 
   constructor(props) {
-        super(props);
-        this.state = {
-            display: 'block'
-        };
-    }
+    super(props);
+    this.state = {
+      display: 'block'
+    };
+  }
 
   render() {
     const display = this.state;
@@ -38,6 +38,6 @@ export default class App extends React.Component {
                     </div>
                 </div>
             </div>
-        );
+    );
   }
 }
