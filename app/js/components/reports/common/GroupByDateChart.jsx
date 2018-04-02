@@ -149,7 +149,6 @@ class GroupByDateChart extends Component {
                         pointRadius: 10,
                         pointHoverRadius: 14,
                         lineTension: 0,
-                        borderWidth: 1,
                         borderColor: '#000000'
                     }]
                 },

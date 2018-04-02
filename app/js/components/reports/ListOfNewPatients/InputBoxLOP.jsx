@@ -18,7 +18,7 @@ class InputBoxLOP extends Component {
 
     valid(selectedDateTime) {
         return moment().isAfter(selectedDateTime);
-    };
+    }
 
     render() {
         return (

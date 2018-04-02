@@ -19,7 +19,7 @@ class ListOfDiagnosis extends Component {
                 startDate: dateStart,
                 endDate: dateEnd
             }
-        };
+        }
         this.getReportUUID = this.getReportUUID.bind(this);
         this.eventListenerForStartDate = this.eventListenerForStartDate.bind(this);
         this.eventListenerForEndDate = this.eventListenerForEndDate.bind(this);

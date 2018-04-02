@@ -1,4 +1,5 @@
 import Line from 'react-chartjs';
+import Chart from 'chart.js';
 import React, { Component } from 'react';
 import { ApiHelper } from '../../../helpers/apiHelper';
 import * as ReportConstants from '../../../helpers/ReportConstants';
@@ -130,7 +131,6 @@ class BasicXYChart extends Component {
                         pointBackgroundColor: 'rgb(77, 172, 237)',
                         pointRadius: 5,
                         pointHoverRadius: 10,
-                        borderWidth: 1,
                         borderColor: '#000000'
 
                     }]
