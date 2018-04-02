@@ -4,7 +4,6 @@ node_modules/**
 dist/**
 libs/**
 app/manifest.webapp
-webpack.config.js
 *.css
 *.png
 *.html

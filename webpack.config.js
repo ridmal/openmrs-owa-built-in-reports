@@ -18,7 +18,7 @@ const env = require('yargs').argv.mode;
 const target = require('yargs').argv.target;
 
 const UglifyPlugin = webpack.optimize.UglifyJsPlugin;
-const CommonsChunkPlugin =  webpack.optimize.CommonsChunkPlugin;
+const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 const DedupePlugin = webpack.optimize.DedupePlugin;
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -30,7 +30,7 @@ const WebpackOnBuildPlugin = require('on-build-webpack');
 const nodeModulesDir = path.resolve(__dirname, '../node_modules');
 
 const pjson = require('./package.json');
-const THIS_APP_ID = 'openmrs-owa-built-in-reports'+ "-" + pjson.version;
+const THIS_APP_ID = 'openmrs-owa-built-in-reports' + "-" + pjson.version;
 
 const plugins = [];
 const nodeModules = {};
@@ -47,24 +47,26 @@ let devtool;
 let getConfig = function () {
   let config;
   try {
-	// look for config file
+    // look for config file
     config = require('./config.json');
+    return config;
   } catch (err) {
-			// create file with defaults if not found
+    // create file with defaults if not found
     config = {
       'LOCAL_OWA_FOLDER': 'C:\\Users\\Jude\\openmrs\\ee\\owa\\',
       'APP_ENTRY_POINT': 'http://localhost:8080/openmrs/owa/openmrs-owa-built-in-reports/index.html'
     };
     fs.writeFile('config.json', JSON.stringify(config));
-  } finally {
     return config;
+  } finally {
+    // console.log("return the config");
   }
 };
 const config = getConfig();
 
 /** Minify for production */
 if (env === 'production') {
-	
+
   plugins.push(new UglifyPlugin({
     output: {
       comments: false,
@@ -78,18 +80,18 @@ if (env === 'production') {
   plugins.push(new DedupePlugin());
   outputFile = `${outputFile}.min.js`;
   outputPath = `${__dirname}/dist/`;
-  plugins.push(new WebpackOnBuildPlugin(function(stats){
-      //create zip file
+  plugins.push(new WebpackOnBuildPlugin(function (stats) {
+    //create zip file
     const archiver = require('archiver');
-			
-    const output = fs.createWriteStream(THIS_APP_ID+'.zip');
+
+    const output = fs.createWriteStream(THIS_APP_ID + '.zip');
     const archive = archiver('zip');
 
     output.on('close', function () {
       //console.log('distributable has been zipped! size: '+archive.pointer());
     });
 
-    archive.on('error', function(err){
+    archive.on('error', function (err) {
       throw err;
     });
 
@@ -113,7 +115,7 @@ if (env === 'production') {
 
 plugins.push(new BrowserSyncPlugin({
   proxy: {
-    target : config.APP_ENTRY_POINT
+    target: config.APP_ENTRY_POINT
   }
 }));
 
@@ -143,9 +145,9 @@ plugins.push(new CopyWebpackPlugin([{
 const webpackConfig = {
   quiet: false,
   entry: {
-    app : `${__dirname}/app/js/openmrs-owa-built-in-reports`,
+    app: `${__dirname}/app/js/openmrs-owa-built-in-reports`,
     css: `${__dirname}/app/css/openmrs-owa-built-in-reports.css`,
-    vendor : [
+    vendor: [
       'react', 'react-router-dom'
     ]
   },
@@ -153,14 +155,14 @@ const webpackConfig = {
   target,
   output: {
     path: outputPath,
-    filename: '[name]'+outputFile
+    filename: '[name]' + outputFile
   },
   module: {
     loaders: [{
       test: /\.jsx?$/,
       loader: 'babel-loader',
       exclude: /node_modules/
-    },{
+    }, {
       test: /\.css$/,
       loader: 'style-loader!css-loader'
     }, {
