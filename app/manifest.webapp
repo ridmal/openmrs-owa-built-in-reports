@@ -1,0 +1,19 @@
+{
+  "version": "0.9.4",
+  "name": "Built-In Reports",
+  "description": "built-in reports for reference application",
+  "launch_path": "index.html",
+  "icons": {
+    "48": "/img/omrs-button.png"
+  },
+  "developer": {
+    "name": "Jude Niroshan",
+    "url": "https://github.com/JudeNiroshan/openmrs-owa-built-in-reports"
+  },
+  "default_locale": "en",
+    "activities": {
+      "openmrs": {
+        "href": "*"
+      }
+    }
+}

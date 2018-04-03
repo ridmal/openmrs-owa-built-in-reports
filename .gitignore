@@ -1,0 +1,9 @@
+node_modules
+bower_components
+dist
+config.json
+libs
+.vscode
+.idea
+**/*.zip
+npm-debug.log
