@@ -139,7 +139,7 @@ class ReportAsPieChart extends Component {
 
             <canvas ref="pieChart" width="100%" height="33%" />
           ) : (
-            <DataNotFound componentName="Chart" />
+          <DataNotFound componentName="Chart" />
           )}
 
       </div>
