@@ -15,6 +15,6 @@ import App from './components/App';
 
 export default function routes() {
   return (
-    <Route path="/" component={App}/>
+    <Route path="/" component={App} />
   );
 }

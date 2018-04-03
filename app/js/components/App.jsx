@@ -10,7 +10,7 @@
  * Copyright (C) OpenMRS, LLC.  All Rights Reserved.
  */
 import React from 'react';
-import {Header} from './common/Header';
+import { Header } from './common/Header';
 import BreadCrumbComponent from './breadCrumb/breadCrumbComponent';
 import MainLayout from './common/MainLayout';
 import "./app.css";
@@ -27,17 +27,17 @@ export default class App extends React.Component {
   render() {
     const display = this.state;
     return (
-            <div>
-                <div id="tabbed-cohort" className="header-component">
-                    <Header/>
-                    <BreadCrumbComponent/>
-                </div>
-                <div id="body-wrapper">
-                    <div id="displayReports"  className="col-md-12 section">
-                        <MainLayout />
-                    </div>
-                </div>
-            </div>
+      <div>
+        <div id="tabbed-cohort" className="header-component">
+          <Header />
+          <BreadCrumbComponent />
+        </div>
+        <div id="body-wrapper">
+          <div id="displayReports" className="col-md-12 section">
+            <MainLayout />
+          </div>
+        </div>
+      </div>
     );
   }
 }

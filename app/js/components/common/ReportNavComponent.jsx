@@ -15,12 +15,12 @@ class ReportNavComponent extends Component {
 
         <ul>
           <li className="active">
-            <div className="menuItemHeader"><span className="icon-dashboard"/>Built-In Reports</div>
+            <div className="menuItemHeader"><span className="icon-dashboard" />Built-In Reports</div>
             <ul>
               <li>
                 <span className="menuItem">
                   <div className="menuItemContainer">
-                    <span className="glyphicon glyphicon-user float-left"/>
+                    <span className="glyphicon glyphicon-user float-left" />
                     <div>
                       <NavLink activeClassName="active" to="/ListOfUsers">
                         List of Users
@@ -32,7 +32,7 @@ class ReportNavComponent extends Component {
               <li>
                 <span className="menuItem">
                   <div className="menuItemContainer">
-                    <span className="glyphicon glyphicon-user float-left"/>
+                    <span className="glyphicon glyphicon-user float-left" />
                     <NavLink to="/ListOfProviders">
                       List of Providers
                                     </NavLink>
@@ -42,7 +42,7 @@ class ReportNavComponent extends Component {
               <li>
                 <span className="menuItem">
                   <div className="menuItemContainer">
-                    <span className="glyphicon glyphicon-exclamation-sign float-left"/>
+                    <span className="glyphicon glyphicon-exclamation-sign float-left" />
                     <NavLink to="/ListOfDiagnosis">
                       List of Diagnosis
                                     </NavLink>
@@ -52,7 +52,7 @@ class ReportNavComponent extends Component {
               <li>
                 <span className="menuItem">
                   <div className="menuItemContainer">
-                    <span className="glyphicon glyphicon-plus-sign float-left"/>
+                    <span className="glyphicon glyphicon-plus-sign float-left" />
                     <div>
                       <NavLink to="/ListOfNewPatients">
                         List of New Patient Registrations
@@ -64,7 +64,7 @@ class ReportNavComponent extends Component {
               <li>
                 <span className="menuItem">
                   <div className="menuItemContainer">
-                    <span className="glyphicon glyphicon-copy float-left"/>
+                    <span className="glyphicon glyphicon-copy float-left" />
                     <NavLink to="/NumberOfAdmissions">
                       Number of Admissions
                                     </NavLink>
@@ -74,7 +74,7 @@ class ReportNavComponent extends Component {
               <li>
                 <span className="menuItem">
                   <div className="menuItemContainer">
-                    <span className="glyphicon glyphicon-paste float-left"/>
+                    <span className="glyphicon glyphicon-paste float-left" />
                     <NavLink to="/NumberOfDischarges">
                       Number of Discharges
                                     </NavLink>
@@ -84,7 +84,7 @@ class ReportNavComponent extends Component {
               <li>
                 <span className="menuItem">
                   <div className="menuItemContainer">
-                    <span className="glyphicon glyphicon-transfer float-left"/>
+                    <span className="glyphicon glyphicon-transfer float-left" />
                     <NavLink to="/NumberOfTransfers">
                       Number of Transfers
                                     </NavLink>
@@ -94,7 +94,7 @@ class ReportNavComponent extends Component {
               <li>
                 <span className="menuItem">
                   <div className="menuItemContainer">
-                    <span className="glyphicon glyphicon-user float-left"/>
+                    <span className="glyphicon glyphicon-user float-left" />
                     <NavLink to="/NumberOfPatients">
                       Number of Patient Registrations
                                     </NavLink>
@@ -104,7 +104,7 @@ class ReportNavComponent extends Component {
               <li>
                 <span className="menuItem">
                   <div className="menuItemContainer">
-                    <span className="glyphicon glyphicon-file float-left"/>
+                    <span className="glyphicon glyphicon-file float-left" />
                     <NavLink to="/NumberOfVisitNotes">
                       Number of Visit Notes
                                     </NavLink>
@@ -114,7 +114,7 @@ class ReportNavComponent extends Component {
               <li>
                 <span className="menuItem">
                   <div className="menuItemContainer">
-                    <span className="glyphicon glyphicon-user float-left"/>
+                    <span className="glyphicon glyphicon-user float-left" />
                     <NavLink to="/NumberOfVisits">
                       Number of Visits
                                     </NavLink>
