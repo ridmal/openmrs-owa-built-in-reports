@@ -44,8 +44,8 @@ class NumberOfDischarges extends Component {
             reportParameters={this.state.parameters} />
 
         ) : (
-            <InfoMessage componentName="location" />
-          )}
+          <InfoMessage componentName="location" />
+        )}
       </div>
     );
   }

@@ -100,8 +100,8 @@ class ReportAsTableView extends Component {
             rowsCount={this.state.reportRowData.length}
             minHeight={280} />
         ) : (
-            <DataNotFound componentName="Report Table" />
-          )}
+          <DataNotFound componentName="Report Table" />
+        )}
 
       </div>
     );

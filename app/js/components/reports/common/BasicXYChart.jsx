@@ -157,8 +157,8 @@ class BasicXYChart extends Component {
           <canvas ref="basicXYChart" width="100%" height="30%" />
 
         ) : (
-            <DataNotFound componentName="Chart" />
-          )}
+          <DataNotFound componentName="Chart" />
+        )}
 
       </div>
     );

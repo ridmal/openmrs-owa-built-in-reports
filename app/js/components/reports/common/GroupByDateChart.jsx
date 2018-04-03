@@ -161,8 +161,8 @@ class GroupByDateChart extends Component {
 
           <canvas ref="groupByDateChart" width="100%" height="30%"/>
         ) : (
-            <DataNotFound componentName="Chart" />
-          )}
+          <DataNotFound componentName="Chart" />
+        )}
 
       </div>
     );
